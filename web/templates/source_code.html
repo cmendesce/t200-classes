@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block style %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+{% endblock %}
+{% block content %}
+  <h1>{{title}}</h1>
+  <pre>
+    <code class="terraform">
+      {{source_code}}
+    </code>
+  </pre>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="{{ url_for('static', filename='js/highlightjs-terraform.js') }}"></script>
+<script>
+  hljs.registerLanguage('terraform', window.hljsDefineTerraform);
+  hljs.initHighlightingOnLoad();
+</script>
+{% endblock %}
